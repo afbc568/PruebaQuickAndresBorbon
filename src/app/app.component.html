@@ -1,0 +1,29 @@
+<div class="row col-12 upperbar">
+  <div class="col-2">
+    <img src="../assets/Img/logo.png" alt="Logo.png" class="logo">
+  </div>
+  <div class="col-10 d-flex align-items-center">
+    <form class="col-12" *ngIf="!logueado">
+      <div class="row col-12 d-flex justify-content-end">
+        <input type="text" class="col-2 mr-2 form-control" (keyup)="chequearInfo()" [(ngModel)]="nombreUsuario" name="nombreUser" placeholder="Nombre"/>
+        <select class="col-2 mr-2 form-control" (change)="chequearInfo()" [(ngModel)]="rol" name="rolUser">
+          <option value="0">Rol de usuario...</option>
+          <option value="administrador">Administrador</option>
+          <option value="coordinador">Coordinador</option>
+        </select>
+        <button class="btn btn-primary" (click)="login()" [disabled]="informacionCorrecta == false" routerLink="{{rol == 'administrador' ? 'admin' : 'coordin'}}">Ingresar</button>
+      </div>
+    </form>
+    <div class="row col-12 d-flex justify-content-end" *ngIf="logueado">
+      <h3 class="mr-2"> {{nombreUsuario}} ({{rol}}) </h3> 
+      <button class="btn btn-primary waves-effects" routerLink="/" (click)="logout()">Salir</button>
+    </div>
+  </div>
+</div>
+<div class="aviso" *ngIf="!logueado" >
+  <h2>Debe iniciar sesion primero. </h2>
+  <h3><br> Administrador: andres <br> Coordinador: walter</h3>
+</div>
+<!-- Usuario: {{nombreUsuario}}
+Rol: {{rol}} -->
+<router-outlet *ngIf="logueado"></router-outlet>

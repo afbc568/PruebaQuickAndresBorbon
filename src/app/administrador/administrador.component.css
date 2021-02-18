@@ -1,0 +1,26 @@
+.tab {
+    padding: 7px;
+    border: 2px solid #FED859;
+    border-bottom: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+}
+
+.tab:hover, .medalla:hover {
+    background-color: #F3F3F3;
+    cursor: pointer;
+}
+
+.active-tab {
+    background-color: #FED859;
+}
+
+.dashboard, .modalMedalla {
+    border: 2px solid #FED859;
+}
+
+.medalla img {
+    margin: 0 auto;
+    max-width: 200px;
+}

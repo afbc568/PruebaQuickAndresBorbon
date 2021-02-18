@@ -1,0 +1,14 @@
+.upperbar {
+    background-color: #FED859;
+}
+
+.upperbar .logo {
+    width: 100px;
+}
+
+.aviso {
+    margin: 20px auto;
+    width: 40%;
+    border: 2px solid #FED859;
+    text-align: center;
+}

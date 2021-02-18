@@ -1,0 +1,76 @@
+<div class="col-12 mt-4">
+    <div class="row col-12">
+      <div class="col-2 text-center tab {{informacion == true ? 'active-tab' : '' }}" (click)="changeTab()">Información</div>
+      <div class="col-2 ml-2 text-center tab {{informacion == false ? 'active-tab' : '' }}" (click)="changeTab()">Categorias</div>
+    </div>
+    <div class="col-12 dashboard">
+<div class="row col-12 m-0 d-flex justify-content-center" *ngIf="informacion == false">
+    <div class="col-4 p-4 medalla">
+        <img src="../../assets/Img/oro.jpg" width="200" alt="Imagen de medalla de oro" (click)="mostrarMensajeMedalla(mensajeMedalla, 'oro')">
+        <h4>Oro: {{totalOro}}</h4>
+    </div>
+    <div class="col-4 p-4 medalla">
+        <img src="../../assets/Img/plata.jpg" width="200" alt="Imagen de medalla de plata" (click)="mostrarMensajeMedalla(mensajeMedalla, 'plata')">
+        <h4>Plata: {{totalPlata}}</h4>
+    </div>
+    <div class="col-4 p-4 medalla">
+        <img src="../../assets/Img/bronce.jpg" width="200" alt="Imagen de medalla de bronce" (click)="mostrarMensajeMedalla(mensajeMedalla, 'bronce')">
+        <h4>Bronce: {{totalBronce}}</h4>
+    </div>
+</div>
+
+    <!-- MODAL -->
+    <!-- Button trigger modal -->
+    <ng-template #mensajeMedalla let-modal class="modalMedalla">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Medalla de {{tipoMedalla}}</h4>
+        </div>
+        <div class="modal-body">
+          <p *ngIf="tipoMedalla == 'oro'">En total son: <b>{{totalOro}}</b></p>
+          <p *ngIf="tipoMedalla == 'plata'">En total son: <b>{{totalPlata}}</b></p>
+          <p *ngIf="tipoMedalla == 'bronce'">En total son: <b>{{totalBronce}}</b></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+        </div>
+      </ng-template>
+<!-- <h4 *ngIf="">Cargando... Por favor espere.</h4> -->
+<table datatable [style]="informacion == true ? 'display:block;' : 'display:none;'" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead>
+      <tr>
+        <th>Atleta</th>
+        <th>Edad</th>
+        <th>País</th>
+        <th>Año</th>
+        <th>Fecha</th>
+        <th>Deporte</th>
+        <th>Oro</th>
+        <th>Plata</th>
+        <th>Bronce</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of rows">
+        <td [style]="row.athlete == '' ? 'color:red;' : 'color: black;'">{{ row.athlete == '' ? 'No registra' : row.athlete}}</td>
+        <td [style]="row.age == '' ? 'color:red;' : 'color: black;'">{{ row.age == '' ? 'No registra' : row.age}}</td>
+        <td [style]="row.country == '' ? 'color:red;' : 'color: black;'">{{ row.country == '' ? 'No registra' : row.country}}</td>
+        <td [style]="row.year == '' ? 'color:red;' : 'color: black;'">{{ row.year == '' ? 'No registra' : row.year}}</td>
+        <td [style]="row.date == '' ? 'color:red;' : 'color: black;'">{{ row.date == '' ? 'No registra' : row.date}}</td>
+        <td [style]="row.sport == '' ? 'color:red;' : 'color: black;'">{{ row.sport == '' ? 'No registra' : row.sport}}</td>
+        <td [style]="row.gold == '' ? 'color:red;' : 'color: black;'">{{ row.gold == '' ? 'No registra' : 0}}</td>
+        <td [style]="row.silver == '' ? 'color:red;' : 'color: black;'">{{ row.silver == '' ? 'No registra' : 0}}</td>
+        <td [style]="row.bronze == '' ? 'color:red;' : 'color: black;'">{{ row.bronze == '' ? 'No registra' : 0}}</td>
+        <td [style]="row.total == '' ? 'color:red;' : 'color: black;'">{{ row.total == '' ? 'No registra' : row.total}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+<!-- El JSON es:  -->
+  <br>
+  <!-- {{rows | json}} -->
+
+  
+</div>
+</div>
